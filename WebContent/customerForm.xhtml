@@ -1,0 +1,67 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Wellcome</title>
+    <style type="text/css">
+        .Err {
+            color: red;
+            font-weight: bold;
+        }
+
+        .Warn {
+            color: orangered;
+            font-size: larger;
+            font-weight: bold;
+            border: 2px solid orangered;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <a href="/ue/index.jsf">Home</a><br />
+    <h:form id="registerform" rendered="#{customerBean.newCustomer}">
+        <h1>New Customer Form</h1>
+        <h:panelGrid columns="3">
+            <h:outputLabel value="First Name:" for="newfirstname"/>
+            <h:inputText id="newfirstname" label="" value="#{customerBean.customer.firstName}" required="true"/>
+            <h:message for="newfirstname"  errorClass="Err"/>
+            <h:outputLabel value="Last Name:" for="newlastname"/>
+            <h:inputText id="newlastname" label="" value="#{customerBean.customer.lastName}" required="true"/>
+            <h:message for="newlastname" errorClass="Err"/>
+            <h:outputLabel value="E-Mail:" for="newemail"/>
+            <h:inputText id="newemail" label="" value="#{customerBean.customer.email}" required="true"/>
+            <h:message for="newemail" errorClass="Err"/>
+            <h:outputLabel value="Username:" for="newusername"/>
+            <h:inputText id="newusername" label="" value="#{customerBean.customer.username}" required="true"/>
+            <h:message for="newusername" errorClass="Err"/>
+            <h:outputLabel value="Password:" for="newpassword"/>
+            <h:inputSecret id="newpassword" label="" value="#{customerBean.customer.password}" required="true"/>
+            <h:message for="newpassword" errorClass="Err"/>
+        </h:panelGrid><br />
+        <h:commandButton value="Register" action="#{customerBean.doShowRegisterCustomer}" />
+    </h:form><br />
+
+    <h:form id="loginform" rendered="#{!customerBean.newCustomer}">
+        <h1>Log In Form</h1>
+        <h:panelGrid columns="3">
+            <h:outputLabel value="Username:" for="username"/>
+            <h:inputText id="username" label="" value="#{customerBean.customer.username}" required="true" />
+            <h:message for="username" errorClass="Err"/>
+            <h:outputLabel value="Password:" for="password"/>
+            <h:inputSecret id="password" label="" value="#{customerBean.customer.password}" required="true"/>
+            <h:message for="password" errorClass="Err"/>
+        </h:panelGrid><br />
+        <h:commandButton value="Login" action="#{customerBean.doValidateCustomer}" />
+    </h:form><br />
+
+    <h:messages errorClass="Err" />
+
+</h:body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Wellcome</title>
+</h:head>
+
+<h:body>
+    <h:panelGroup rendered="#{customerBean.customerState==2}">
+       <h1>Wellcome back <h:outputText value="#{customerBean.customer.username}" /></h1>
+        <h2>You are registered as:</h2>
+        <h:panelGrid columns="2" border="1">
+            <h:outputLabel value="First Name:" />
+            <h:outputText value="#{customerBean.customer.firstName}" />
+            <h:outputLabel value="Last Name:" />
+            <h:outputText value="#{customerBean.customer.lastName}" />
+            <h:outputLabel value="E-Mail:" />
+            <h:outputText value="#{customerBean.customer.email}" />
+            <h:outputLabel value="User Name:" />
+            <h:outputText value="#{customerBean.customer.username}" />
+        </h:panelGrid><br />
+        <h:form><h:commandButton value="Logout" action="#{customerBean.doLogout}" /></h:form>
+    </h:panelGroup>
+    <h:panelGroup rendered="#{customerBean.customerState==1}">
+        <h1>Check your registration model</h1>
+        <h:panelGrid columns="2" border="1">
+            <h:outputLabel value="First Name:" />
+            <h:outputText value="#{customerBean.customer.firstName}" />
+            <h:outputLabel value="Last Name:" />
+            <h:outputText value="#{customerBean.customer.lastName}" />
+            <h:outputLabel value="E-Mail:" />
+            <h:outputText value="#{customerBean.customer.email}" />
+            <h:outputLabel value="User Name:" />
+            <h:outputText value="#{customerBean.customer.username}" />
+        </h:panelGrid>
+            <h:form><br />
+        <h:commandButton value="Save" action="#{customerBean.doSaveCustomer}" />
+        </h:form>
+    </h:panelGroup>
+
+</h:body>
+
+</html>

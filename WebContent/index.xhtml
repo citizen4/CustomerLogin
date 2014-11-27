@@ -1,0 +1,31 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://primefaces.org/ui"
+        >
+
+<h:head>
+    <title>Wellcome</title>
+</h:head>
+
+<h:body>
+    <h1>Wellcome</h1>
+
+    <h:form>
+        <h:panelGrid columns="2" border="1">
+            <h:selectOneRadio id="newcustomer" value="#{customerBean.newCustomer}">
+                <f:selectItem id="item1" itemLabel="Customer" itemValue="false" />
+                <f:selectItem id="item2" itemLabel="New Customer" itemValue="true" />
+            </h:selectOneRadio>
+            <h:commandButton value="Next" action="customerForm" />
+        </h:panelGrid>
+    </h:form>
+
+</h:body>
+
+</html>
