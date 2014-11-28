@@ -6,7 +6,7 @@
       xmlns:c="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://primefaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
         >
 
 <h:head>
@@ -16,6 +16,8 @@
 <h:body>
     <h1>Wellcome</h1>
 
+    <p:outputLabel value="foo"/>
+    <p:panel>Bar</p:panel>
     <h:form>
         <h:panelGrid columns="2" border="1">
             <h:selectOneRadio id="newcustomer" value="#{customerBean.newCustomer}">

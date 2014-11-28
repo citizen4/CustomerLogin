@@ -1,33 +1,47 @@
 package model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.transaction.Transactional;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "customer_tbl", schema = "", catalog = "")
+@Table(name = "customer_tbl")
 public class Customer
 {
     @Id
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
+
     @Column(name = "FIRSTNAME")
+    @NotEmpty
     private String firstName;
+
     @Column(name = "LASTNAME")
+    @NotEmpty
     private String lastName;
+
     @Column(name = "EMAIL")
+    @Pattern(regexp = "\\w+[.-]*\\w+@\\w+\\.\\w+", message = "Not a valid email address!")
     private String email;
+
     @Column(name = "USERNAME")
+    @Size(min = 2, max = 32)
     private String username;
+
     @Column(name = "PASSWORD")
     private String passwordHash;
+
     @Transient
     private String password;
+
     @Transient
     private int customerId = -1;
 

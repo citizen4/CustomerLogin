@@ -1,41 +1,52 @@
 package bean;
 
-import hibernate.HibernateUtil;
-import model.Customer;
 import db.CustomerDAO;
-import org.hibernate.Session;
+import model.Customer;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+//import javax.enterprise.context.SessionScoped;
 
-@ManagedBean
-@SessionScoped
-public class CustomerBean
+
+@Named
+@javax.enterprise.context.SessionScoped
+public class CustomerBean implements Serializable
 {
+    @Inject
+    private TestBean testBean;
+
     private CustomerDAO customerDAO;
     private Customer customer;
     private boolean loggedIn;
     private boolean newCustomer;
     private int customerState;
-    //private String customerValid;
+    private String customerValid;
 
 
     public CustomerBean()
     {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.close();
+        //Session session = HibernateUtil.getSessionFactory().openSession();
+        //session.close();
 
         this.customerDAO = new CustomerDAO();
         this.customer = new Customer();
         this.newCustomer = false;
         this.customerState = 0;
-        //this.customerValid = "invalid";
+    }
+
+    @PostConstruct
+    private void init()
+    {
+        this.customerValid = testBean.getFoo();
+        System.out.println("Post construct:" + this.customerValid);
     }
 
     public boolean isNewCustomer()

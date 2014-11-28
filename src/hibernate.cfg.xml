@@ -7,9 +7,10 @@
         <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
         <property name="hibernate.connection.url">jdbc:sqlite:c:\java3\sqlitedb\sqlite.db</property>
         <property name="hibernate.connection.username"/>
-        <property name="dialect">hibernate.SQLiteDialect</property>
+        <property name="hibernate.dialect">hibernate.SQLiteDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
         <!--<mapping resource="hibernate/Address.hbm.xml" />-->
         <mapping class="model.Customer" />
     </session-factory>
